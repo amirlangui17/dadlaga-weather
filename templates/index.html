@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цаг агаарын тойм мэдээ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+
+<div id="weather-poster">
+
+    <header class="header">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo" alt="УЦУОШТ">
+        <h1>ЦАГ АГААРЫН ТОЙМ МЭДЭЭ</h1>
+    </header>
+
+    <div class="period">
+        {{ weather.year }} оны {{ weather.month }} дугаар сарын {{ weather.day }}-ны {{ weather.start_time }} цагаас<br>
+        {{ weather.month }} дугаар сарын {{ weather.end_day }}-ны {{ weather.end_time }} цаг хүртэлх цаг агаарын урьдчилсан мэдээ
+    </div>
+
+    <main class="content">
+        <section class="left">
+            <div class="image-card">
+                <img src="{{ url_for('static', filename='images/map.png') }}" alt="Сэлэнгэ аймгийн газрын зураг">
+            </div>
+
+            <div class="image-card seal-card">
+                <img src="{{ url_for('static', filename='images/seal.png') }}" alt="Сүхбаатар хот">
+            </div>
+        </section>
+
+        <section class="right">
+
+            <div class="section-title">
+                <span>←</span>
+                <strong>{{ weather.province }}</strong>
+                <span>→</span>
+            </div>
+
+            <div class="info-box">
+                <div class="icon">🌤️</div>
+                <div>{{ weather.province_condition }}</div>
+            </div>
+
+            <div class="info-box">
+                <div class="icon">💨</div>
+                <div>{{ weather.province_wind }}</div>
+            </div>
+
+            <div class="info-box">
+                <div class="icon">🌙</div>
+                <div>
+                    Шөнөдөө <b>{{ weather.province_night }} градус</b><br>
+                    Өдөртөө <b>{{ weather.province_day }} градус</b> дулаан байна.
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="section-title city-title">
+                <span>←</span>
+                <strong>{{ weather.city }}</strong>
+                <span>→</span>
+            </div>
+
+            <div class="info-box">
+                <div class="icon">💨</div>
+                <div>{{ weather.city_wind }}</div>
+            </div>
+
+            <div class="city-weather">
+                <div class="small-box">
+                    <span class="icon">🌤️</span>
+                    <b>{{ weather.city_condition }}</b>
+                </div>
+
+                <div class="small-box">
+                    <span class="icon">☀️</span>
+                    <b>
+                        Шөнөдөө {{ weather.city_night }}<br>
+                        Өдөртөө {{ weather.city_day }} градус<br>
+                        дулаан байна.
+                    </b>
+                </div>
+            </div>
+
+            <p class="detail">{{ weather.detail }}</p>
+            <p class="forecaster">{{ weather.forecaster }}</p>
+
+        </section>
+    </main>
+</div>
+
+<div class="download-area">
+    <button onclick="saveWeatherImage()" class="download-button">
+        📥 Зураг хадгалах
+    </button>
+</div>
+
+<script>
+async function saveWeatherImage() {
+    const poster = document.getElementById("weather-poster");
+    const button = document.querySelector(".download-button");
+
+    button.innerText = "⏳ Зураг бэлдэж байна...";
+    button.disabled = true;
+
+    try {
+        const canvas = await html2canvas(poster, {
+            scale: 1,
+            useCORS: true,
+            backgroundColor: "#ffffff",
+            width: 1080,
+            height: 1080,
+            windowWidth: 1080,
+            windowHeight: 1080
+        });
+
+        const image = canvas.toDataURL("image/png", 1.0);
+        const link = document.createElement("a");
+
+        link.download =
+            "tsag-agaaryn-medee-{{ weather.year }}-{{ weather.month }}-{{ weather.day }}.png";
+        link.href = image;
+        link.click();
+
+    } catch (error) {
+        console.error(error);
+        alert("Зураг хадгалахад алдаа гарлаа.");
+    }
+
+    button.innerText = "📥 Зураг хадгалах";
+    button.disabled = false;
+}
+</script>
+
+</body>
+</html>

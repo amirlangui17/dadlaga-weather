@@ -1,0 +1,601 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #e9eef2;
+    font-family: Arial, "Helvetica Neue", sans-serif;
+    color: #172331;
+}
+
+#weather-poster {
+    width: 1080px;
+    height: 1080px;
+    margin: 30px auto;
+    padding: 28px 35px;
+    background: white;
+    overflow: hidden;
+}
+
+.header {
+    height: 125px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.logo {
+    width: 190px;
+    height: 110px;
+    object-fit: contain;
+}
+
+h1 {
+    margin: 0;
+    color: #216b9f;
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.period {
+    width: 560px;
+    margin: 0 auto 18px;
+    padding: 10px 20px;
+    text-align: center;
+    background: #b8d5e8;
+    border-radius: 7px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.2;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 48% 52%;
+    gap: 22px;
+}
+
+.left {
+    padding-right: 15px;
+}
+
+.image-card {
+    border: 6px solid #8eb0c9;
+    border-radius: 24px;
+    overflow: hidden;
+    margin-bottom: 28px;
+    background: white;
+}
+
+.image-card img {
+    display: block;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.seal-card img {
+    object-position: center;
+}
+
+.right {
+    border-left: 2px solid #9bb3c3;
+    padding-left: 22px;
+}
+
+.section-title {
+    display: grid;
+    grid-template-columns: 40px 1fr 40px;
+    align-items: center;
+    text-align: center;
+    color: #1f2d3a;
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+.section-title span {
+    color: #79a5c8;
+    font-size: 38px;
+    line-height: 1;
+}
+
+.section-title strong {
+    background: #8db3d2;
+    padding: 7px 10px;
+    border-radius: 3px;
+}
+
+.info-box {
+    display: grid;
+    grid-template-columns: 58px 1fr;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, #edf5fa, #dfeaf3);
+    border-radius: 12px;
+    padding: 9px 12px;
+    margin: 8px 0;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.15;
+}
+
+.icon {
+    font-size: 36px;
+    text-align: center;
+}
+
+.divider {
+    height: 2px;
+    background: #9bb3c3;
+    margin: 7px 0 16px;
+}
+
+.city-title {
+    margin-bottom: 9px;
+}
+
+.city-weather {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 9px;
+}
+
+.small-box {
+    min-height: 100px;
+    background: linear-gradient(90deg, #edf5fa, #dfeaf3);
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 16px;
+    line-height: 1.12;
+}
+
+.small-box .icon {
+    font-size: 32px;
+}
+
+.detail {
+    background: #eef4f8;
+    border-radius: 12px;
+    padding: 11px 13px;
+    margin: 10px 0 3px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.15;
+}
+
+.forecaster {
+    text-align: right;
+    margin: 5px 0 0;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.download-area {
+    text-align: center;
+    margin: 20px auto 40px;
+}
+
+.download-button {
+    border: none;
+    background: #2476a9;
+    color: white;
+    padding: 14px 35px;
+    font-size: 19px;
+    font-weight: 700;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: 0.2s;
+}
+
+.download-button:hover {
+    transform: translateY(-2px);
+    background: #195d87;
+}
+
+.download-button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+@media (max-width: 1150px) {
+    #weather-poster {
+        transform-origin: top center;
+        transform: scale(calc(100vw / 1150));
+        margin-bottom: -150px;
+    }
+/* =====================================================
+   ADMIN
+===================================================== */
+
+.admin-body {
+
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e8f3fa,
+            #f5f7fa
+        );
+
+    padding: 30px 15px;
+
+}
+
+
+.admin-container {
+
+    max-width: 950px;
+
+    margin: auto;
+
+    background: white;
+
+    padding: 35px;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 40px
+        rgba(0,0,0,0.12);
+
+}
+
+
+.admin-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+
+}
+
+
+.admin-header h1 {
+
+    font-size: 32px;
+
+    color: #216b9f;
+
+}
+
+
+.admin-header p {
+
+    margin-top: 5px;
+
+    color: #667;
+
+}
+
+
+.top-button,
+.logout-button {
+
+    display: inline-block;
+
+    padding: 10px 15px;
+
+    margin-left: 5px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+}
+
+
+.top-button {
+
+    background: #2476a9;
+
+    color: white;
+
+}
+
+
+.logout-button {
+
+    background: #e74c3c;
+
+    color: white;
+
+}
+
+
+.admin-section {
+
+    background: #f5f9fc;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    margin-bottom: 20px;
+
+    border-left: 5px solid #8db3d2;
+
+}
+
+
+.admin-section h2 {
+
+    margin-top: 0;
+
+    color: #216b9f;
+
+    font-size: 22px;
+
+}
+
+
+.admin-section label {
+
+    display: block;
+
+    margin-top: 15px;
+
+    margin-bottom: 6px;
+
+    font-weight: bold;
+
+}
+
+
+.admin-section input,
+.admin-section textarea {
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #ccd8e0;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    font-family: Arial, sans-serif;
+
+    background: white;
+
+}
+
+
+.admin-section textarea {
+
+    resize: vertical;
+
+}
+
+
+.form-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+}
+
+
+.form-grid input {
+
+    width: 100%;
+
+}
+
+
+.save-button {
+
+    width: 100%;
+
+    padding: 17px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #2476a9;
+
+    color: white;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+
+.save-button:hover {
+
+    background: #195d87;
+
+}
+
+
+.success {
+
+    background: #dff5e5;
+
+    color: #227a3b;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    margin-bottom: 20px;
+
+    font-weight: bold;
+
+}
+
+
+.error {
+
+    background: #fde3e3;
+
+    color: #b42318;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.login-box {
+
+    width: 400px;
+
+    max-width: 95%;
+
+    margin: 100px auto;
+
+    padding: 40px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow:
+        0 10px 40px
+        rgba(0,0,0,0.15);
+
+}
+
+
+.login-icon {
+
+    font-size: 60px;
+
+}
+
+
+.login-box h1 {
+
+    font-size: 30px;
+
+    color: #216b9f;
+
+}
+
+
+.login-box p {
+
+    color: #667;
+
+}
+
+
+.login-box label {
+
+    display: block;
+
+    text-align: left;
+
+    margin-bottom: 7px;
+
+    font-weight: bold;
+
+}
+
+
+.login-box input {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: 1px solid #ccd8e0;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.login-box button {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #2476a9;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+
+.login-box a {
+
+    display: block;
+
+    margin-top: 20px;
+
+    color: #2476a9;
+
+    text-decoration: none;
+
+}
+
+
+@media (max-width: 700px) {
+
+    .admin-container {
+
+        padding: 20px;
+
+    }
+
+    .admin-header {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+
+    }
+
+    .form-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}}

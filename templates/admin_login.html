@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="mn">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Админ нэвтрэх</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="admin-body">
+
+    <div class="login-box">
+
+        <div class="login-icon">
+            🔐
+        </div>
+
+        <h1>Админ хэсэг</h1>
+
+        <p>
+            Цаг агаарын мэдээг шинэчлэх
+        </p>
+
+        {% if error %}
+        <div class="error">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <form method="POST">
+
+            <label>
+                Нууц үг
+            </label>
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Нууц үгээ оруулна уу"
+                required
+            >
+
+            <button type="submit">
+                Нэвтрэх
+            </button>
+
+        </form>
+
+        <a href="/">
+            ← Нүүр хуудас
+        </a>
+
+    </div>
+
+</body>
+
+</html>
+

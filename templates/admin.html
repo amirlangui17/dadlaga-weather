@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="mn">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Цаг агаарын админ</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="admin-body">
+
+<div class="admin-container">
+
+    <div class="admin-header">
+
+        <div>
+            <h1>🌤️ Цаг агаарын мэдээ</h1>
+            <p>Админ удирдлагын хэсэг</p>
+        </div>
+
+        <div>
+
+            <a href="/" class="top-button">
+                🌐 Сайт харах
+            </a>
+
+            <a href="/logout" class="logout-button">
+                Гарах
+            </a>
+
+        </div>
+
+    </div>
+
+
+    {% if saved %}
+
+    <div class="success">
+        ✅ Мэдээ амжилттай шинэчлэгдлээ!
+    </div>
+
+    {% endif %}
+
+
+    <form method="POST">
+
+
+        <!-- ОГНОО -->
+
+        <div class="admin-section">
+
+            <h2>📅 Мэдээний огноо</h2>
+
+            <div class="form-grid">
+
+                <div>
+                    <label>Он</label>
+
+                    <input
+                        type="text"
+                        name="year"
+                        value="{{ weather.year }}">
+                </div>
+
+                <div>
+                    <label>Сар</label>
+
+                    <input
+                        type="text"
+                        name="month"
+                        value="{{ weather.month }}">
+                </div>
+
+                <div>
+                    <label>Өдөр</label>
+
+                    <input
+                        type="text"
+                        name="day"
+                        value="{{ weather.day }}">
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ХУГАЦАА -->
+
+        <div class="admin-section">
+
+            <h2>⏰ Мэдээний хугацаа</h2>
+
+            <div class="form-grid">
+
+                <div>
+
+                    <label>Эхлэх цаг</label>
+
+                    <input
+                        type="text"
+                        name="start_time"
+                        value="{{ weather.start_time }}">
+
+                </div>
+
+                <div>
+
+                    <label>Дуусах өдөр</label>
+
+                    <input
+                        type="text"
+                        name="end_day"
+                        value="{{ weather.end_day }}">
+
+                </div>
+
+                <div>
+
+                    <label>Дуусах цаг</label>
+
+                    <input
+                        type="text"
+                        name="end_time"
+                        value="{{ weather.end_time }}">
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- СЭЛЭНГЭ -->
+
+        <div class="admin-section">
+
+            <h2>📍 Сэлэнгэ аймгийн нутаг</h2>
+
+            <label>
+                Гарчиг
+            </label>
+
+            <input
+                type="text"
+                name="province"
+                value="{{ weather.province }}">
+
+
+            <label>
+                Цаг агаарын төлөв
+            </label>
+
+            <textarea
+                name="province_condition"
+                rows="4">{{ weather.province_condition }}</textarea>
+
+
+            <label>
+                Салхи
+            </label>
+
+            <input
+                type="text"
+                name="province_wind"
+                value="{{ weather.province_wind }}">
+
+
+            <div class="form-grid">
+
+                <div>
+
+                    <label>
+                        Шөнийн температур
+                    </label>
+
+                    <input
+                        type="text"
+                        name="province_night"
+                        value="{{ weather.province_night }}">
+
+                </div>
+
+                <div>
+
+                    <label>
+                        Өдрийн температур
+                    </label>
+
+                    <input
+                        type="text"
+                        name="province_day"
+                        value="{{ weather.province_day }}">
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- СҮХБААТАР -->
+
+        <div class="admin-section">
+
+            <h2>🏙️ Сүхбаатар хот</h2>
+
+            <label>
+                Гарчиг
+            </label>
+
+            <input
+                type="text"
+                name="city"
+                value="{{ weather.city }}">
+
+
+            <label>
+                Цаг агаар
+            </label>
+
+            <textarea
+                name="city_condition"
+                rows="3">{{ weather.city_condition }}</textarea>
+
+
+            <label>
+                Салхи
+            </label>
+
+            <input
+                type="text"
+                name="city_wind"
+                value="{{ weather.city_wind }}">
+
+
+            <div class="form-grid">
+
+                <div>
+
+                    <label>
+                        Шөнийн температур
+                    </label>
+
+                    <input
+                        type="text"
+                        name="city_night"
+                        value="{{ weather.city_night }}">
+
+                </div>
+
+                <div>
+
+                    <label>
+                        Өдрийн температур
+                    </label>
+
+                    <input
+                        type="text"
+                        name="city_day"
+                        value="{{ weather.city_day }}">
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- НЭМЭЛТ МЭДЭЭ -->
+
+        <div class="admin-section">
+
+            <h2>📝 Нэмэлт мэдээлэл</h2>
+
+            <label>
+                Дэлгэрэнгүй мэдээ
+            </label>
+
+            <textarea
+                name="detail"
+                rows="6">{{ weather.detail }}</textarea>
+
+
+            <label>
+                Мэдээ бичсэн инженер
+            </label>
+
+            <input
+                type="text"
+                name="forecaster"
+                value="{{ weather.forecaster }}">
+
+        </div>
+
+
+        <!-- ХАДГАЛАХ -->
+
+        <button
+            type="submit"
+            class="save-button">
+
+            💾 МЭДЭЭ ШИНЭЧЛЭХ
+
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+
+</html>
